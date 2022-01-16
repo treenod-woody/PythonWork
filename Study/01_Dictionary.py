@@ -24,8 +24,13 @@
 # del cabinet[3]
 # print(cabinet)
 
-# 모든 키값 또는 밸류값만 출력, 키밸류 모두 출력
-cabinet = {3:"유재석", 5:"정형돈", 100:"김태호"}
-print(cabinet.keys())
-print(cabinet.values())
-print(cabinet.items())
+# # 모든 키값 또는 밸류값만 출력, 키밸류 모두 출력
+# cabinet = {3:"유재석", 5:"정형돈", 100:"김태호"}
+# print(cabinet.keys())
+# print(cabinet.values())
+# print(cabinet.items())
+
+fruit = {'apple':5, 'banana':8, 'grape':7, 'orange':3, 'peach':10}
+
+for k, v in fruit.items():
+    print(k.ljust(15, '-') + str(v).rjust(10))
