@@ -1,4 +1,3 @@
-from cgitb import text
 import os
 import shutil
 from tkinter import *
@@ -115,6 +114,7 @@ def get_file():
         filetypes=(("TXT 파일", "*.txt"), ("모든 파일", "*.*")), \
             initialdir="C:/")   # 최초 시작 경로는 C:/
 
+    e_filepath.delete(0, "end")
     e_filepath.insert(END, file)
 
 def save_dir():
