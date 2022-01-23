@@ -23,7 +23,6 @@ def endTextLine(path, start_index, end_index, sub_data, number):
         fileMake(path, 'a', logTxt)
     else:
         logTxt = ''
-
     return end_text
 
 # 파일 생성 또는 수정
