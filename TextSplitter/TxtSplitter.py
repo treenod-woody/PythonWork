@@ -81,6 +81,7 @@ def main(origin_path, save_dir, maxChar):
 
     except FileNotFoundError:
         msgbox.showinfo("알림","해당 파일이 존재하지 않습니다.")
+        print("파일이 존재하지 않습니다.")
 
 # ==========================================================
 # 다이얼로그 사용자 입력 정의
