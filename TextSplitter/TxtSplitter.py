@@ -39,46 +39,49 @@ def main(origin_path, save_dir, maxChar):
         with open(origin_path, "r", encoding="utf8") as source_file:
             data = source_file.read()
             source_file.close()
-    except FileExistsError:
-        print("00.txt 파일이 존재하지 않습니다.")
 
-    # final 디렉토리 생성하고 로그파일 생성  -------------------------------------------
-    dir = save_dir + "/final"
-    logfile = dir + "/00_log.txt"
-    folderMake(dir)
-    fileMake(logfile, 'w', '로그파일이 생성되었습니다.\n')
+        # final 디렉토리 생성하고 로그파일 생성  -------------------------------------------
+        dir = save_dir + "/final"
+        logfile = dir + "/00_log.txt"
+        folderMake(dir)
+        fileMake(logfile, 'w', '로그파일이 생성되었습니다.\n')
 
-    data_length = len(data)
-    startIdx = 0    # 시작 인덱스값
-    endIdx = data.find('\n', maxChar) # maxChar 인덱스 이후에 나오는 첫번째 줄바꿈 인덱스값
-    subData = data[startIdx:endIdx]
+        data_length = len(data)
+        startIdx = 0    # 시작 인덱스값
+        endIdx = data.find('\n', maxChar) # maxChar 인덱스 이후에 나오는 첫번째 줄바꿈 인덱스값
+        subData = data[startIdx:endIdx]
 
-    # 텍스트 파일에 데이터 기록하고 저장하기
-    num = 0
-    while data_length > 0:
+        # 텍스트 파일에 데이터 기록하고 저장하기
+        num = 0
+        while data_length > 0:
 
-        num += 1
-        endLineTxt = endTextLine(logfile, startIdx, endIdx, subData, num)
+            num += 1
+            endLineTxt = endTextLine(logfile, startIdx, endIdx, subData, num)
 
-        if num < 10:
-            filePath = dir + f'/0{str(num)}.txt'
-        else:
-            filePath = dir + f'/{str(num)}.txt'
+            if num < 10:
+                filePath = dir + f'/0{str(num)}.txt'
+            else:
+                filePath = dir + f'/{str(num)}.txt'
 
-        # print('저장 파일 경로 : ' + filePath)
-        fileMake(filePath, 'w', subData)
+            # print('저장 파일 경로 : ' + filePath)
+            fileMake(filePath, 'w', subData)
 
-        # 파일 생성후 다음 파일 컨텐츠를 위한 인덱스 조정
-        data_length -= (endIdx - startIdx)
-        startIdx = endIdx
-        findIdx = startIdx + maxChar
+            # 파일 생성후 다음 파일 컨텐츠를 위한 인덱스 조정
+            data_length -= (endIdx - startIdx)
+            startIdx = endIdx
+            findIdx = startIdx + maxChar
 
-        if findIdx < len(data):
-            endIdx = data.find('\n', findIdx)
-        else:
-            endIdx = len(data)
+            if findIdx < len(data):
+                endIdx = data.find('\n', findIdx)
+            else:
+                endIdx = len(data)
 
-        subData = data[startIdx+1:endIdx]
+            subData = data[startIdx+1:endIdx]
+
+        msgbox.showinfo("알림","작업이 완료되었습니다.")
+
+    except FileNotFoundError:
+        msgbox.showinfo("알림","해당 파일이 존재하지 않습니다.")
 
 # ==========================================================
 # 다이얼로그 사용자 입력 정의
