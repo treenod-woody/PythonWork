@@ -12,14 +12,14 @@ win.title("FileOrderChecker")
 
 # 폴더 선택 프레임 -------------------------------
 frame_dir = Frame(win, relief="solid", bd=1)
-frame_dir.pack(fill="x", padx=5, pady=5)
+frame_dir.pack(fill="x", padx=10, pady=10)
 
-labelRef = Label(frame_dir, text="검사 폴더")
+labelRef = Label(frame_dir, text="폴더경로 : ")
 labelRef.pack(side="left")
 
 e_openDir = Entry(frame_dir, width=30)
-e_openDir.pack(side="left")
-e_openDir.insert(END, "/Users/woody/Desktop/CheckerTest")
+e_openDir.pack(side="left", padx=4, pady=4)
+e_openDir.insert(END, "폴더를 선택해주세요.")
 
 def open_dir():
     dir = filedialog.askdirectory(title="파일을 검사할 폴더를 선택하세요.")
@@ -31,13 +31,13 @@ btn_openDir.pack(side="right")
 
 # 검사 회차 선택 프레임 ----------------------------
 frame_num = Frame(win, relief="solid", bd=1)
-frame_num.pack(fill="x", padx=5, pady=5)
+frame_num.pack(fill="x", padx=10, pady=10)
 
-labelRef_num = Label(frame_num, text="검사 회차 (숫자만)")
+labelRef_num = Label(frame_num, text="시작회차(숫자만 입력) : ")
 labelRef_num.pack(side="left")
 
 e_startNum = Entry(frame_num, width=10)
-e_startNum.pack(side="left")
+e_startNum.pack(side="left", padx=4, pady=4)
 e_startNum.insert(END, "1")
 
 # 버튼 실행 --------------------------------------
@@ -93,7 +93,7 @@ def fileMake(path, state, content):
     with open(path, state, encoding="utf8") as file:
         file.write(content)
 
-btn_confirm = Button(win, padx=10, pady=4, text="검사하기", command=btncmd)
+btn_confirm = Button(win, padx=4, pady=4, text="검사하기", command=btncmd)
 btn_confirm.pack(padx=5, pady=5)
 
 win.mainloop()
