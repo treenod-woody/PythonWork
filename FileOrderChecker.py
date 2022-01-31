@@ -1,4 +1,3 @@
-from ast import For
 from tkinter import *
 from tkinter import filedialog
 import tkinter.messagebox as msgbox
