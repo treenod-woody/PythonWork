@@ -1,12 +1,6 @@
 import win32com.client
 import os
 
-text_all = []
-
-
-
-
-
 # 파일 리스트 숫자 기준으로 정렬된 리스트 리턴
 def fileListSort(dirPath) :
     
