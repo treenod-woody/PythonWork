@@ -1,3 +1,3 @@
-value = [0,1,2,3]
+values = {1: '한글파일테스트 1화.hwp', 2: '한글파일테스트 2화.hwp', 3: '한글파일테스트 3화.hwp', 13: ' 한글파일테스트 13화.hwp'}
 
-print(value[-1])
+print(values[1])
