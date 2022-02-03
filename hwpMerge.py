@@ -83,12 +83,13 @@ def btncmd():
         for file in hwplist:
             hwp.Open(root + "/" + file)
             hwp.Run("MoveDocBegin")
-
-            hwp.CreateField(Direction="-", memo="-", name="start")
-            hwp.PutFieldText(Field="start", Text="@") # '@' 붙여넣기
+            
+            hwp.HAction.GetDefault('InsertText', hwp.HParameterSet.HInsertText.HSet)
+            hwp.HParameterSet.HInsertText.Text = '@'
+            hwp.HAction.Execute('InsertText', hwp.HParameterSet.HInsertText.HSet)
             hwp.Run("MoveDocEnd")
-            hwp.CreateField(Direction="-", memo="-", name="last")
-            hwp.PutFieldText(Field="last", Text="\r\n\r\n") # 줄바꿈
+            hwp.Run("BreakPara")
+            hwp.Run("BreakPara")
 
             hwp.Run("MoveDocBegin")
             hwp.Run("Select")
