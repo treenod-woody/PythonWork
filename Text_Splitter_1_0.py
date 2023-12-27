@@ -13,13 +13,13 @@ def find_end_index(content, sep_num):
 
 # 원본 파일의 내용 가져오기
 def extract_txt_content(file_path):
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='UTF8') as file:
         content = file.read()
     return content
 
 # 파일 저장하기
 def save_text_to_file(file_path, content):
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding='UTF8') as file:
         file.write(content)
 
 # 원본 파일 경로 얻기
@@ -45,10 +45,11 @@ def create_folder(folder_path):
 
 
 def save_txt():
-    file_path = entry_0.get()       # 원본 파일 경로
+    input_path = entry_0.get()
+    file_path =  fr"{entry_0.get()}"       # 원본 파일 경로
     folder_path = os.path.dirname(file_path)
-    create_folder(f"{folder_path}/Complete")
-    save_dir = f"{folder_path}/Complete"        # 저장 폴더 경로
+    create_folder(fr"{folder_path}/Complete")
+    save_dir = fr"{folder_path}/Complete"        # 저장 폴더 경로
     input_num = int(entry_1.get())         # 분리할 숫자 크기
 
     content = extract_txt_content(file_path) # 컨텐츠 내용

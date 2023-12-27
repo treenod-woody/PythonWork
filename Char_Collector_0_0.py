@@ -21,7 +21,7 @@ def extract_file_paths(folder_path):
 
 # 특정 문자열 개수 추출
 def count_character(file_path, character):
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='UTF8') as file:
         content = file.read()
         count = content.count(character)
         return count
@@ -29,8 +29,6 @@ def count_character(file_path, character):
 # 파일명 이름 변경
 def rename_file_with_character_count(file_path, save_folder_path, characters):
     
-    # 파일명과 확장자 분리
-    file_dir = os.path.dirname(file_path)
     file_name = os.path.basename(file_path)
     signed = ""
     i = 0
@@ -38,12 +36,12 @@ def rename_file_with_character_count(file_path, save_folder_path, characters):
         # '@' 문자 개수 추출
         count = count_character(file_path, character)
         if not count == 0:
-            signed += f"{character}{count}__"
+            signed += fr"{character}{count}__"
             i += 1
     if not i == 0:
-        new_file_name = f"{save_folder_path}/0__{signed}{file_name}"
+        new_file_name = fr"{save_folder_path}/0__{signed}{file_name}"
     elif i == 0:
-        new_file_name = f"{save_folder_path}/{file_name}"
+        new_file_name = fr"{save_folder_path}/{file_name}"
 
     return new_file_name
 
@@ -59,19 +57,20 @@ def create_folder(folder_path):
 
 # 원본 파일의 내용 가져오기
 def extract_txt_content(file_path):
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='UTF8') as file:
         content = file.read()
     return content
 
 # 파일 저장하기
 def save_text_to_file(file_path, content):
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding='UTF8') as file:
         file.write(content)
 
 def signed_char_save():
-    folder_path = entry_0.get()
-    create_folder(f"{folder_path}/Complete")
-    save_folder_path = f"{folder_path}/Complete"
+    input_path = entry_0.get()
+    folder_path = fr"{input_path}"
+    create_folder(fr"{folder_path}/Complete")
+    save_folder_path = fr"{folder_path}/Complete"
     print(save_folder_path)
     file_paths = extract_file_paths(folder_path)
 
